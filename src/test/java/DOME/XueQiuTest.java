@@ -3,7 +3,6 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.internal.ResponseSpecificationImpl;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -21,7 +20,7 @@ public class XueQiuTest {
     @BeforeClass
     public static void  before(){
         useRelaxedHTTPSValidation();
-        RestAssured.proxy("",8888);
+        RestAssured.proxy("127.0.0.1",8888);
         RestAssured.baseURI="https://api.xueqiu.com";
 
         requestSpecification=new RequestSpecBuilder().build();
@@ -54,7 +53,7 @@ public class XueQiuTest {
         System.out.println(code);
     }
     @Test
-    public static void testLogin1(){
+    public void testLogin1(){
         Response response=given()
                 //.header("","")
                 .queryParam("","")
